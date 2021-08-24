@@ -28,6 +28,22 @@ public class ProfilManager {
 // Methods
 	
 	// Method "selectByPeudo()"
+		public Utilisateur selectByNo(int No) throws BusinessException {
+			Utilisateur utilisateur = new Utilisateur();
+			if (this.profilDAO==null) {
+				this.profilDAO=DAOFactory.getProfilDAO();
+			}
+			try {
+				utilisateur = this.profilDAO.SelectByNo(No);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return utilisateur;
+		}
+	
+	
+	
+	// Method "selectByPeudo()"
 	public Utilisateur selectByPseudo(String pseudo) throws BusinessException {
 		Utilisateur utilisateur = new Utilisateur();
 		try {
