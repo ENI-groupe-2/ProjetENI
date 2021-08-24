@@ -2,6 +2,7 @@ package fr.eni.enchere.servlets;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,7 +46,7 @@ public class ConnectionServlet extends HttpServlet {
 		
 		String Pseudo=null;
 		String MotDePasse=null;
-	
+
 		
 	
 	
@@ -55,10 +56,11 @@ public class ConnectionServlet extends HttpServlet {
 		//lecture de l'utilisateur
 		Pseudo = request.getParameter("identifiant");
 		MotDePasse = request.getParameter("password");
+		
 		//J'ajoute l'utilisateur
 		
 		ConnexionManager connexionManager= new ConnexionManager();
-		
+
 		try {
 			connexionManager.testerMotDePasse(Pseudo, MotDePasse);
 		
@@ -67,6 +69,7 @@ public class ConnectionServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("pseudo", Pseudo);
 				session.setAttribute("motdepasse", MotDePasse);
+
 				RequestDispatcher rd = request.getRequestDispatcher("/AccueilConnecteServlet");
 				rd.forward(request, response);
 				
