@@ -20,7 +20,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String SELECT_BY_NO = "select no_utilisateur, pseudo, nom, prenom, email, telephone,  rue, code_postal, ville, mot_de_passe, credit, administrateur "
 			+ " from UTILISATEURS where no_utilisateur = ?";
 
-	private static final String SELECT_BY_PSEUDO = "SELECT no_utilisateur, mot_de_passe FROM UTILISATEURS where pseudo = ?";
+	private static final String SELECT_BY_PSEUDO = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone,  rue, code_postal, ville, mot_de_passe, credit, administrateur FROM UTILISATEURS where pseudo = ?";
 	
 	private static final String UPDATE = "UPDATE UTILISATEURS SET pseudo='?', nom='?', prenom='?', email='?', telephone='?',  rue='?', code_postal='?', ville='?', mot_de_passe='?', credit='?', administrateur='?' WHERE no_utilisateur = ? ";
 
@@ -123,7 +123,10 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					ResultSet rs = pstmt.executeQuery();
 					Utilisateur utilisateur = null;
 					while (rs.next()) {
-						utilisateur = new Utilisateur(rs.getInt("no_utilisateur"), pseudo, rs.getString("mot_de_passe"));
+						utilisateur = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"),
+								rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"),
+								rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"),
+								rs.getInt("credit"), rs.getBoolean("administrateur"));
 
 					}
 

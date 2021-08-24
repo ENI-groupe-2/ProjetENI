@@ -155,10 +155,7 @@ public class Utilisateur {
 	public Utilisateur(String pseudo2, String motDePasse2) {
 		// TODO Auto-generated constructor stub
 	}
-	public Utilisateur(String string, String string2, String string3, String string4, String string5, String string6,
-			String string7, String string8) {
-		// TODO Auto-generated constructor stub
-	}
+
 	
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
 			String codePostal, String ville) {

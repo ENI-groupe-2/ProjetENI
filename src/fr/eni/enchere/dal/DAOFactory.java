@@ -29,9 +29,6 @@ public abstract class DAOFactory {
 		return new CategorieDAOJdbcImpl();
 	}
 
-	public static ProfilDAO getProfilDAO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }
 	

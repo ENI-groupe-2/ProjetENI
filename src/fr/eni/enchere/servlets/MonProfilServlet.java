@@ -2,6 +2,7 @@ package fr.eni.enchere.servlets;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fr.eni.enchere.bll.ProfilManager;
 import fr.eni.enchere.bll.UtilisateurManager;
 import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.encheres.BusinessException;
@@ -37,8 +37,8 @@ public class MonProfilServlet extends HttpServlet {
 		doPost(request, response);
 
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/desktop_page6-7.jsp");
-		rd.forward(request, response);
+	
+	
 		
 	}
 
@@ -47,18 +47,14 @@ public class MonProfilServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pseudo;
-		//enlever apres test
-		if (request.getSession().getAttribute("pseudo")== null){
-		pseudo="";
-	} else {
 		
 	
 		 pseudo = (String)request.getSession().getAttribute("pseudo");
-	}
-		ProfilManager profilmanager = new ProfilManager();
+	
+		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		Utilisateur utilisateur;
 		try {
-			utilisateur = profilmanager.selectByPseudo(pseudo);
+			utilisateur = utilisateurManager.selectByPseudo(pseudo);
 			request.setAttribute("Pseudo", utilisateur.getPseudo());
 			request.setAttribute("Nom", utilisateur.getNom());
 			request.setAttribute("Prenom", utilisateur.getPrenom());

@@ -70,4 +70,33 @@ public class UtilisateurManager {
 			throw businessException;
 		}
 		return utilisateur;
-	}}
+	}
+	// Method "selectByPeudo()"
+	public Utilisateur selectByNo(int No) throws BusinessException {
+		Utilisateur utilisateur = new Utilisateur();
+		if (this.utilisateurDAO==null) {
+			this.utilisateurDAO=DAOFactory.getUtilisateurDAO();
+		}
+		try {
+			utilisateur = this.utilisateurDAO.SelectByNo(No);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return utilisateur;
+	}
+
+
+
+// Method "selectByPeudo()"
+public Utilisateur selectByPseudo(String pseudo) throws BusinessException {
+	Utilisateur utilisateur = new Utilisateur();
+	try {
+		utilisateur = this.utilisateurDAO.SelectByPseudo(pseudo);
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return utilisateur;
+}    
+
+
+}

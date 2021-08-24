@@ -12,15 +12,17 @@ ENI-Enchères
 <body>
 <br><br><br>
 <!--Utiliser Expression Language EL + balises JSTL-->
+
+
 <div>
-Pseudo : <br>
-Nom : <br>
-Prénom : <br>
-Email : <br>
-Téléphone : <br>
-Rue : <br>
-Code postal : <br>
-Ville : <br>
+Pseudo : <%=request.getAttribute("Pseudo") %> <br>
+Nom : <%=request.getAttribute("Nom") %><br>
+Prénom :<%=request.getAttribute("Prenom") %> <br>
+Email : <%=request.getAttribute("Email") %><br>
+Téléphone : <%=request.getAttribute("Telephone") %><br>
+Rue :<%=request.getAttribute("Rue") %> <br>
+Code postal :<%=request.getAttribute("codePostal") %> <br>
+Ville :<%=request.getAttribute("Ville") %> <br>
 </div>
 <br>
 <br>
