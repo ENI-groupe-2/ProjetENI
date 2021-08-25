@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+
 import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.enchere.dal.DAOFactory;
 import fr.eni.enchere.dal.UtilisateurDAO;
@@ -41,7 +43,7 @@ public class UtilisateurManager {
 	{
 		
 		BusinessException businessException = new BusinessException();
-
+		
 		
 		Utilisateur utilisateur = null;
 		
@@ -59,13 +61,12 @@ public class UtilisateurManager {
 			utilisateur.setMotDePasse(motDePasse);
 			utilisateur.setCredit(0);
 			utilisateur.isAdmin();
-
-
-			
-			
-			this.utilisateurDAO.insert(utilisateur);;
+	
+			this.utilisateurDAO.insert(utilisateur);
+	
 		}
 		else
+			
 		{
 			throw businessException;
 		}
@@ -98,5 +99,54 @@ public Utilisateur selectByPseudo(String pseudo) throws BusinessException {
 	return utilisateur;
 }    
 
+//Method "updateUtilisateur()"
+	public Utilisateur update(	String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse) throws BusinessException {
+		
+		BusinessException businessException = new BusinessException();
+		this.validationEmail(email, businessException);
+		this.validationPseudo(pseudo, businessException);
+		
+		Utilisateur utilisateur = null;
+		
+		if (!businessException.hasErreurs()) {
+			utilisateur = new Utilisateur();
+			utilisateur.setPseudo(pseudo);
+			utilisateur.setNom(nom);
+			utilisateur.setPrenom(prenom);
+			utilisateur.setEmail(email);
+			utilisateur.setTelephone(telephone);
+			utilisateur.setRue(rue);
+			utilisateur.setCodePostal(codePostal);
+			utilisateur.setVille(ville);
+			utilisateur.setMotDePasse(motDePasse);
+
+			try {
+				this.utilisateurDAO.UpdateUtilisateur(utilisateur);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} else {
+			throw businessException;
+		}
+		return utilisateur;
+	}
+	
+	// Methods "validationEmail()" >> Nécessaire pour la method "updateUser()"
+	private void validationEmail(String email, BusinessException businessException) {
+		if(email != null) {
+			if(!email.matches("^(.+)@(.+)$") ) {
+				businessException.ajouterErreur(CodesResultatBLL.REGLE_VALIDATION_EMAIL);;
+			}
+		} 
+	}
+	
+	// Methods "validationPseudo()" >> Nécessaire pour la method "updateUser()"
+	private void validationPseudo(String pseudo, BusinessException businessException) {
+		if(pseudo != null) {
+			if (!pseudo.matches("^[a-zA-Z0-9]*$ ")) {
+				businessException.ajouterErreur(CodesResultatBLL.REGLE_VALIDATION_PSEUDO);
+			}
+		}
+		}
 
 }

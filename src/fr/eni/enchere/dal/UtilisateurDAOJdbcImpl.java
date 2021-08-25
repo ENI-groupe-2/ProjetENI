@@ -22,7 +22,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	private static final String SELECT_BY_PSEUDO = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone,  rue, code_postal, ville, mot_de_passe, credit, administrateur FROM UTILISATEURS where pseudo = ?";
 	
-	private static final String UPDATE = "UPDATE UTILISATEURS SET pseudo='?', nom='?', prenom='?', email='?', telephone='?',  rue='?', code_postal='?', ville='?', mot_de_passe='?', credit='?', administrateur='?' WHERE no_utilisateur = ? ";
+	private static final String UPDATE = "UPDATE UTILISATEURS SET pseudo=?, nom=?, prenom=?, email=?, telephone=?,  rue=?, code_postal=?, ville=?, mot_de_passe=? WHERE pseudo = ? ";
 
 	private static final String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?";
 	
@@ -142,6 +142,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 		// Mise en place de la connection
 		try (Connection cnx = ConnectionProvider.getConnection()) {
+			cnx.setAutoCommit(false);
 			PreparedStatement rqt = cnx.prepareStatement(UPDATE);
 	
 			rqt.setString(1, utilisateur.getPseudo());
@@ -153,9 +154,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			rqt.setString(7, utilisateur.getCodePostal());
 			rqt.setString(8, utilisateur.getVille());
 			rqt.setString(9, utilisateur.getMotDePasse());
-			rqt.setInt(10, utilisateur.getCredit());
-			rqt.setBoolean(11, utilisateur.isAdmin());
-			rqt.setInt(12, utilisateur.getNoUtilisateur());
+			rqt.setString(10, utilisateur.getPseudo());
 			rqt.executeUpdate();
 			cnx.commit();
 		}
