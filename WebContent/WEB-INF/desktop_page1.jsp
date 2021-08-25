@@ -6,8 +6,7 @@
     <title>ENI-Encheres</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-    <meta name="description" content="ENI-Enchères : Le site des ventes aux enchères  des objets d'art, meubles, véhicules, matériel et encore plus! Participez aux enchères en direct ..."/>
-    <meta author="Veronika"/>
+    <meta name="description" content="ENI-Enchères : Le site des ventes aux enchères des objets d'informatique, meubles, vêtement et encore plus! Participez aux enchères en direct ..."/>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/CSS/feuille_de_style_p1.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +18,7 @@
     <header>
 
         <div class="entete"> <!-- entete avec logo -->
-            <a href="Liste_des_encheres_p1.html" title="Accueil"><h1>ENI-Enchères</h1><img src="<%=request.getContextPath()%>/MEDIA/auction-white2.png" alt="logo auction"></a>
+            <a href="AccueilServlet" title="Accueil"><h1>ENI-Enchères</h1><img src="<%=request.getContextPath()%>/MEDIA/auction-white2.png" alt="logo auction"></a>
         </div>
 
         <!-- options utilisateur -->
@@ -42,7 +41,7 @@
 
          <!-- Barre de recherche -->
         <label for="site-search"></label>
-        <input type="search" id="site-search" name="Barre de recherche" placeholder="Le nom de l'article contient" title="Barre de recherche" >
+        <input type="search" id="site-search" name="q" placeholder="Le nom de l'article contient" title="Barre de recherche" >
         
         <br><br>
 
@@ -59,7 +58,7 @@
         <!-- Bouton rechercher-->
         <button id="btRechercher">Rechercher</button>
     
-    <nav><!-- fin navigation = filtres -->
+    </nav><!-- fin navigation = filtres -->
 
     <section>
         <!-- la liste de toutes les enchères en cours => A COMPLETER -->

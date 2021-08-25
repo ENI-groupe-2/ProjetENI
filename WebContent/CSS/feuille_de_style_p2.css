@@ -1,0 +1,49 @@
+body {padding-top: 10px;
+    background-image: url(../MEDIA/green-background.png); 
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 1370px 650px;}
+
+#titre {text-align: center;}
+
+.entete {font-family: 'Kaushan Script', cursive;
+       padding-left: 20px;}
+     
+.entete a {text-decoration: none;
+         color: rgb(44, 24, 18);}
+
+.entete img {width: 100px;
+           height: 100px;
+           position: absolute;
+           padding-left: 135px;
+           padding-right: 135px;
+           margin-top: -90px;
+           margin-left: auto;}
+
+form {position: sticky;
+	  padding-top: 30px;
+      padding-left: 500px;
+      padding-right: 500px;}
+
+form label {display: inline-block;
+            width: 110px;
+            color: #242424;}
+
+form input {padding: 5px 15px;}
+
+#bouton {padding-top: 50px;
+         text-align: center;
+         padding-right: 100px;}
+
+#bouton input {display: inline-block;
+      		   width: 315px;
+      		   height: 70px;
+     		   color: #000000;}
+
+.boutonForm {background-color: white;}
+
+#btConnex {float: left;}
+
+#check {float: right;
+        margin-inline: 30px;
+    	text-align: right;}

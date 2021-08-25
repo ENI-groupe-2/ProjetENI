@@ -20,9 +20,13 @@ body {padding-top: 10px;
              margin-top: -90px;
              margin-left: auto;}
 
+
 #header-user-infos {float: right;
                     margin-top: -60px;
-                    padding-right: 20px;}
+                    padding-right: 20px;
+                    text-align: left;}
+
+#header-user-infos a {padding: 0px 10px;}
 
 nav label {color: #242424}
                  
@@ -32,12 +36,24 @@ nav input {padding: 5px 10px;}
               height: 35px;}
 
 #categorie {position: static;
-    width: 340px;}
+            width: 340px;}
 
 #btRechercher {position:absolute;
                width: 300px;
                height: 80px;
                background-color: white;
                color: #000000;
-               margin-top: -60px;
-               margin-inline: 100px;}
+               margin-top: -65px;
+               margin-inline: 450px;}
+
+ul {list-style-type: none;}
+
+#right {float: right;
+        padding-right: 850px;}
+
+#right li {padding-left: 35px;}
+
+#left {float: left;
+        margin-left: -50px;}
+
+#left li{padding-left: 35px;}
