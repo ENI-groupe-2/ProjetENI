@@ -44,7 +44,7 @@
                 <br><br>
 
                 <label for="cp">Code postal : </label>
-                <input name="cp" type="text" id="cp" value="<%=request.getAttribute("codePostal") %>" required>
+                <input name="cp" type="text" id="cp" value="<%=request.getAttribute("codePostal") %>" value="" required>
 
                 <br><br>
 
@@ -54,7 +54,7 @@
                 <br><br>
 
                 <label for="password">Nouveau mot de passe : </label>
-                <input name="newpassword" type="password" id="newpassword" required>
+                <input name="newpassword" type="password" id="newpassword" >
 
                 <br><br>
 
@@ -82,7 +82,7 @@
                 <br><br><br><br><br><br>
 
                 <label for="repeatpassword">Confirmation : </label>
-                <input name="repeatpassword" type="password" id="repeatpassword" required>
+                <input name="repeatpassword" type="password" id="repeatpassword" >
 
             <br><br>
 
@@ -96,7 +96,7 @@
         <form>
             <div id="bouton">
                 <input type="submit" value="Enregistrer" />
-                <input type="reset" name="btSupprimerMonCompte" value="Supprimer mon compte" class="boutonForm" title="Supprimer mon compte" />
+                <a href="SupprimerServlet"><input type="button" name="btSupprimerMonCompte" value="Supprimer mon compte" class="boutonForm" title="Supprimer mon compte" /></a>
             </div>
         </form>
         </form>

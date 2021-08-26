@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.enchere.bll.ConnexionManager;
+import fr.eni.enchere.bll.UtilisateurManager;
 import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.encheres.BusinessException;
 
@@ -46,7 +47,7 @@ public class ConnectionServlet extends HttpServlet {
 		
 		String Pseudo=null;
 		String MotDePasse=null;
-
+		int id = 0;
 		
 	
 	
@@ -56,10 +57,11 @@ public class ConnectionServlet extends HttpServlet {
 		//lecture de l'utilisateur
 		Pseudo = request.getParameter("identifiant");
 		MotDePasse = request.getParameter("password");
-		
+	
 		//J'ajoute l'utilisateur
-		
+		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		ConnexionManager connexionManager= new ConnexionManager();
+		Utilisateur utilisateur = new Utilisateur();
 
 		try {
 			connexionManager.testerMotDePasse(Pseudo, MotDePasse);
@@ -69,7 +71,15 @@ public class ConnectionServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("pseudo", Pseudo);
 				session.setAttribute("motdepasse", MotDePasse);
-
+				
+				try {
+					utilisateur = utilisateurManager.selectByPseudo(Pseudo);
+				} catch (BusinessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}		
+				session.setAttribute("id", utilisateur.getNoUtilisateur());
+				
 				RequestDispatcher rd = request.getRequestDispatcher("/AccueilConnecteServlet");
 				rd.forward(request, response);
 				
@@ -84,6 +94,8 @@ public class ConnectionServlet extends HttpServlet {
 		
 			request.setAttribute("listeCodesErreur",e.getListeCodesErreur());	
 		}
+		
+		
 	}
 
 }

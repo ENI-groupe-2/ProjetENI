@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.encheres.BusinessException;
 import fr.eni.enchere.bll.UtilisateurManager;
@@ -55,8 +56,8 @@ public class EnregistrementServlet extends HttpServlet {
 				String MotDePasse=null;
 				int credit=0;
 				boolean admin=true;
-				String utilisateur=null;
-				
+			
+			
 				
 				request.setCharacterEncoding("UTF-8");
 			
@@ -73,8 +74,20 @@ public class EnregistrementServlet extends HttpServlet {
 				
 				//J'ajoute l'utilisateur
 				UtilisateurManager utilisateurManager = new UtilisateurManager();
+				Utilisateur utilisateur = new Utilisateur();
 				try {
 					utilisateurManager.ajouterUtilisateur(Pseudo, Nom, Prenom, Email, Telephone, Rue, CodePostal, Ville, MotDePasse, credit, admin);
+					//Insertion pseudo et mdp en session
+					HttpSession session = request.getSession();
+					session.setAttribute("pseudo", Pseudo);
+					session.setAttribute("motdepasse", MotDePasse);
+					try {
+						utilisateur = utilisateurManager.selectByPseudo(Pseudo);
+					} catch (BusinessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}		
+					session.setAttribute("id", utilisateur.getNoUtilisateur());
 					//Si tout se passe bien, je vais vers la page d'accueil:
 					RequestDispatcher rd = request.getRequestDispatcher("/AccueilConnecteServlet");
 					rd.forward(request, response);

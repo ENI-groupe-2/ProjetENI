@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+
 import fr.eni.enchere.bll.UtilisateurManager;
 import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.encheres.BusinessException;
@@ -34,27 +36,17 @@ public class MonProfilServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-
+	
+		int id=0;
 		
-	
-	
 		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pseudo;
+		 id = (int) request.getSession().getAttribute("id");
 		
-	
-		 pseudo = (String)request.getSession().getAttribute("pseudo");
-	
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		Utilisateur utilisateur;
+	
 		try {
-			utilisateur = utilisateurManager.selectByPseudo(pseudo);
+			utilisateur = utilisateurManager.selectByNo(id);
 			request.setAttribute("Pseudo", utilisateur.getPseudo());
 			request.setAttribute("Nom", utilisateur.getNom());
 			request.setAttribute("Prenom", utilisateur.getPrenom());
@@ -77,6 +69,21 @@ public class MonProfilServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/desktop_page6-7.jsp");
 		rd.forward(request, response);
 	}
+	
+	
+
+		
+	
+	
+		
+	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
 
 }
 
+}

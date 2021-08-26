@@ -87,6 +87,18 @@ public class UtilisateurManager {
 	}
 
 
+	public void delete(int id) throws BusinessException {
+		
+		if (this.utilisateurDAO==null) {
+			this.utilisateurDAO=DAOFactory.getUtilisateurDAO();
+		}
+		try {
+			this.utilisateurDAO.delete(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 // Method "selectByPeudo()"
 public Utilisateur selectByPseudo(String pseudo) throws BusinessException {
@@ -100,11 +112,11 @@ public Utilisateur selectByPseudo(String pseudo) throws BusinessException {
 }    
 
 //Method "updateUtilisateur()"
-	public Utilisateur update(	String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse) throws BusinessException {
+	public Utilisateur UpdateUtilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse, int no_utilisateur) throws BusinessException {
 		
 		BusinessException businessException = new BusinessException();
-		this.validationEmail(email, businessException);
-		this.validationPseudo(pseudo, businessException);
+		//this.validationEmail(email, businessException);
+		//this.validationPseudo(pseudo, businessException);
 		
 		Utilisateur utilisateur = null;
 		
@@ -119,7 +131,7 @@ public Utilisateur selectByPseudo(String pseudo) throws BusinessException {
 			utilisateur.setCodePostal(codePostal);
 			utilisateur.setVille(ville);
 			utilisateur.setMotDePasse(motDePasse);
-
+			utilisateur.setNoUtilisateur(no_utilisateur);
 			try {
 				this.utilisateurDAO.UpdateUtilisateur(utilisateur);
 			} catch (SQLException e) {
