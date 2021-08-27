@@ -145,6 +145,9 @@ public class ArticleVendu {
 	public ArticleVendu() {
 		// TODO Auto-generated constructor stub
 	}
+	public ArticleVendu(int int1, String string, String string2, Date date, Date date2, int int2, int int3) {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description

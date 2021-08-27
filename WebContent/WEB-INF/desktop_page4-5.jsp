@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="java.util.List"%>
+<%@page import="fr.eni.enchere.bo.ArticleVendu"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,8 +87,42 @@
         <!-- Bouton rechercher-->
         <button id="btRechercher" type="submit" value="Rechercher">Rechercher</button>
     
-    <nav><!-- fin navigation = filtres -->
+    </nav><!-- fin navigation = filtres -->
+    <br>
+    
+    <%
+					List<ArticleVendu> ListeArticle = (List<ArticleVendu>) request.getAttribute("listeArticle");
+					
+						for(ArticleVendu ArticleInsertion : ListeArticle)
+						{
+					
+				%>
+	 <section> <!-- AFFICHER LES ACHATS OU LES VENTES  -->
+            <article class="obj">
+                <main class="frame"> <!-- Image de l'article (objet) -->
+                    <img class="image" src="#"> <!--Afficher la photo de l'article mis en vente-->
+                </main>
+                
+                
+                <form>
+                    <div class="infos">
+                        <label for="article" class="nomArticle"><b><%=ArticleInsertion.getNomArticle() %></b></label>
+                        <br>
+                        <label for="prix">Prix : <%=ArticleInsertion.getPrixVente() %> </label> <!--Faire apparaitre le prix -->
+                        <br>
+                        <label for="finEnch">Fin de l'enchère : <%=ArticleInsertion.getDateDebutEncheres() %></label> <!--faire apparaitre la date de fin d'enchère-->
+                        <br>
+                        <label for="vendeur">Vendeur : <%=ArticleInsertion.getNoUtilisateur() %>  </label> <!--Faire apparaitre le nom du vendeur-->
+                        <br>
+                    </div>
+                </form>
+            </article>
 
+           
+			<% }%>
+    </section>
+
+    <br><br>
     <section>
         <!-- aperçue de la liste des enchères => A COMPLETER -->
     </section>

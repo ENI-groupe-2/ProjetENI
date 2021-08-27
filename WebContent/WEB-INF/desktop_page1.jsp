@@ -59,6 +59,123 @@
         <button id="btRechercher">Rechercher</button>
     
     </nav><!-- fin navigation = filtres -->
+    
+
+        <!-- Bouton rechercher-->
+        
+
+    </nav><!-- fin navigation = filtres -->
+
+    <br>
+
+    <section> <!-- AFFICHER LES ENCHERES EN COURS -->
+        <article class="obj">
+            <main class="frame"> <!-- Image de l'article (objet) -->
+                <img class="image" src="#"> <!--Afficher la photo de l'article mis en vente-->
+            </main>
+            <form>
+                <div class="infos">
+                    <label for="article" class="nomArticle"><b>----- Le nom de l'article ----</b></label>
+                    <br>
+                    <label for="prix">Prix : </label> <!--Faire apparaitre le prix -->
+                    <br>
+                    <label for="finEnch">Fin de l'enchère : </label> <!--faire apparaitre la date de fin d'enchère-->
+                    <br>
+                    <label for="vendeur">Vendeur : </label> <!--Faire apparaitre le nom du vendeur-->
+                    <br>
+                </div>
+            </form>
+        </article>
+<article class="obj">
+            <main class="frame"> <!-- Image de l'article (objet) -->
+                <img class="image" src="#"> <!--Afficher la photo de l'article mis en vente-->
+            </main>
+            <form>
+                <div class="infos">
+                    <label for="article" class="nomArticle"><b>----- Le nom de l'article ----</b></label>
+                    <br>
+                    <label for="prix">Prix : </label> <!--Faire apparaitre le prix -->
+                    <br>
+                    <label for="finEnch">Fin de l'enchère : </label> <!--faire apparaitre la date de fin d'enchère-->
+                    <br>
+                    <label for="vendeur">Vendeur : </label> <!--Faire apparaitre le nom du vendeur-->
+                    <br>
+                </div>
+            </form>
+        </article>
+
+        <article class="obj">
+            <main class="frame"> <!-- Image de l'article (objet) -->
+                <img class="image" src="#"> <!--Afficher la photo de l'article mis en vente-->
+            </main>
+            <form>
+                <div class="infos">
+                    <label for="article" class="nomArticle"><b>----- Le nom de l'article ----</b></label>
+                    <br>
+                    <label for="prix">Prix : </label> <!--Faire apparaitre le prix -->
+                    <br>
+                    <label for="finEnch">Fin de l'enchère : </label> <!--faire apparaitre la date de fin d'enchère-->
+                    <br>
+                    <label for="vendeur">Vendeur : </label> <!--Faire apparaitre le nom du vendeur-->
+                    <br>
+                </div>
+            </form>
+        </article>
+<article class="obj">
+            <main class="frame"> <!-- Image de l'article (objet) -->
+                <img class="image" src="#"> <!--Afficher la photo de l'article mis en vente-->
+            </main>
+            <form>
+                <div class="infos">
+                    <label for="article" class="nomArticle"><b>----- Le nom de l'article ----</b></label>
+                    <br>
+                    <label for="prix">Prix : </label> <!--Faire apparaitre le prix -->
+                    <br>
+                    <label for="finEnch">Fin de l'enchère : </label> <!--faire apparaitre la date de fin d'enchère-->
+                    <br>
+                    <label for="vendeur">Vendeur : </label> <!--Faire apparaitre le nom du vendeur-->
+                    <br>
+                </div>
+            </form>
+        </article>
+
+        <article class="obj">
+            <main class="frame"> <!-- Image de l'article (objet) -->
+                <img class="image" src="#"> <!--Afficher la photo de l'article mis en vente-->
+            </main>
+            <form>
+                <div class="infos">
+                    <label for="article" class="nomArticle"><b>----- Le nom de l'article ----</b></label>
+                    <br>
+                    <label for="prix">Prix : </label> <!--Faire apparaitre le prix -->
+                    <br>
+                    <label for="finEnch">Fin de l'enchère : </label> <!--faire apparaitre la date de fin d'enchère-->
+                    <br>
+                    <label for="vendeur">Vendeur : </label> <!--Faire apparaitre le nom du vendeur-->
+                    <br>
+                </div>
+            </form>
+        </article>
+<article class="obj">
+            <main class="frame"> <!-- Image de l'article (objet) -->
+                <img class="image" src="#"> <!--Afficher la photo de l'article mis en vente-->
+            </main>
+            <form>
+                <div class="infos">
+                    <label for="article" class="nomArticle"><b>----- Le nom de l'article ----</b></label>
+                    <br>
+                    <label for="prix">Prix : </label> <!--Faire apparaitre le prix -->
+                    <br>
+                    <label for="finEnch">Fin de l'enchère : </label> <!--faire apparaitre la date de fin d'enchère-->
+                    <br>
+                    <label for="vendeur">Vendeur : </label> <!--Faire apparaitre le nom du vendeur-->
+                    <br>
+                </div>
+            </form>
+        </article>
+
+    </section>
+
 
     <section>
         <!-- la liste de toutes les enchères en cours => A COMPLETER -->

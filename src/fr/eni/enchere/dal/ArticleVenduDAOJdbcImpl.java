@@ -95,9 +95,11 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 			ResultSet rs = pstmt.executeQuery();
 			ArticleVendu articleVendu;
 			while (rs.next()) {
-				articleVendu = new ArticleVendu(rs.getString("nom_article"), rs.getString("description"),
-						rs.getDate("date_debut_encheres"), rs.getDate("date_fin_encheres"), rs.getInt("prix_initial"),
-						rs.getInt("prix_vente"));
+				articleVendu = new ArticleVendu();
+				articleVendu.setNomArticle(rs.getString("nom_article"));
+				articleVendu.setPrixVente(rs.getInt("prix_vente"));
+				//articleVendu.setDateFinEncheres(rs.getDate("date_fin_encheres"));
+				System.out.println(articleVendu);
 				listeArticleVendu.add(articleVendu);
 			}
 		}
