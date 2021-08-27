@@ -23,8 +23,20 @@
     </header>
    
     <form action="<%=request.getContextPath()%>/ConnectionServlet" method="post">
+       
+      	<!--message d'erreur pseudo ou mdp incorrect--!>
+ 
+         <%if (request.getAttribute("ErreurConn")== null){ request.setAttribute("ErreurConn", "");} %>
+        	<%=request.getAttribute("ErreurConn") %> 
+        	
+        	<!--message compte supprimé--!>
+ 
+         <%if (request.getAttribute("ErreurSupp")== null){ request.setAttribute("ErreurSupp", "");} %>
+        	<%=request.getAttribute("ErreurSupp") %> 
         
+       
         <div> <!-- Identifiant et mot de passe-->
+         <br> <br>
             <label for="identifiant"> Identifiant : </label>
             <input id="identifiant" type="text" name="identifiant" placeholder="Votre identifiant ici...">
 

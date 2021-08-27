@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.enchere.bo.ArticleVendu;
+import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.enchere.dal.ArticleVenduDAO;
 import fr.eni.enchere.dal.DAOFactory;
 import fr.eni.encheres.BusinessException;
@@ -23,12 +24,22 @@ public class ArticleVenduManager {
 // Methods
 	
 	// Method "insertArticle()"
-	public ArticleVendu insertArticle(String nomArticle, String description, LocalDate dateDebutEnchere, LocalDate dateFinEnchere, int prixInitial, int prixVente) throws BusinessException {
+	public ArticleVendu insertArticle(String nomArticle, String description, LocalDate dateDebutEnchere, LocalDate dateFinEnchere, int prixInitial, int prixVente, int numUtil, int categorie) throws BusinessException {
 		BusinessException businessException = new BusinessException();
 		this.validationDate(dateDebutEnchere, dateFinEnchere, businessException);
 		
-		ArticleVendu articleVendu = new ArticleVendu();
+		ArticleVendu articleVendu= null;
+		
 		if (!businessException.hasErreurs()) {
+			 articleVendu = new ArticleVendu();
+			 articleVendu.setNomArticle(nomArticle);
+			 articleVendu.setDescription(description);
+			 articleVendu.setDateDebutEncheres(dateDebutEnchere);
+			 articleVendu.setDateFinEncheres(dateFinEnchere);
+			 articleVendu.setMiseAPrix(prixInitial);
+			 articleVendu.setPrixVente(prixVente);
+			 articleVendu.setNoUtilisateur(numUtil);
+			 articleVendu.setCategorie(categorie);
 			this.articleVenduDAO.insert(articleVendu);
 		} else {
 			throw businessException;
@@ -58,5 +69,31 @@ public class ArticleVenduManager {
 			}
 			
 		}
+	public ArticleVendu SelectByNoArticle (int noArticle) throws SQLException {
+		ArticleVendu articleVendu= null;
+        try {
+        	articleVendu = this.articleVenduDAO.SelectByNoArticle(noArticle);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return articleVendu;
+
+    }
+
+
+		
+	
+	public ArticleVendu SelectByNoCate(int id) throws SQLException {
+		ArticleVendu article = null;
+		
+		try {
+			
+			article = this.articleVenduDAO.SelectByNoCate(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return article;
+	}
 		
 	}

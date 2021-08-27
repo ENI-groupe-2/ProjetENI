@@ -52,6 +52,8 @@ public class SupprimerServlet extends HttpServlet {
 		try {
 			utilisateurManager.delete(no_utilisateur);
 			System.out.println("Delete : OK");
+			//Message d'erreur
+			request.setAttribute("ErreurSupp", "Votre compte a était supprimé");
 			RequestDispatcher rd = request.getRequestDispatcher("/ConnectionServlet");
 			rd.forward(request, response);
 		} catch (BusinessException e) {

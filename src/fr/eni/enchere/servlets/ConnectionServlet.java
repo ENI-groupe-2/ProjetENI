@@ -35,6 +35,7 @@ public class ConnectionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/desktop_page2.jsp");
 		rd.forward(request, response);
 	}
@@ -48,10 +49,11 @@ public class ConnectionServlet extends HttpServlet {
 		String Pseudo=null;
 		String MotDePasse=null;
 		int id = 0;
+	
 		
 	
 	
-		
+	
 		request.setCharacterEncoding("UTF-8");
 		
 		//lecture de l'utilisateur
@@ -63,37 +65,37 @@ public class ConnectionServlet extends HttpServlet {
 		ConnexionManager connexionManager= new ConnexionManager();
 		Utilisateur utilisateur = new Utilisateur();
 
-		try {
-			connexionManager.testerMotDePasse(Pseudo, MotDePasse);
 		
-			if (connexionManager.testerMotDePasse(Pseudo, MotDePasse) == true) {
-			
-				HttpSession session = request.getSession();
-				session.setAttribute("pseudo", Pseudo);
-				session.setAttribute("motdepasse", MotDePasse);
-				
-				try {
-					utilisateur = utilisateurManager.selectByPseudo(Pseudo);
-				} catch (BusinessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}		
-				session.setAttribute("id", utilisateur.getNoUtilisateur());
-				
-				RequestDispatcher rd = request.getRequestDispatcher("/AccueilConnecteServlet");
-				rd.forward(request, response);
-				
-			}else {
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/desktop_page2.jsp");
-				rd.forward(request, response);
-		}} catch (BusinessException e) {
-
-			//Sinon je retourne à la page d'enregistrement pour indiquer les problèmes:
-			e.printStackTrace();
-			
 		
-			request.setAttribute("listeCodesErreur",e.getListeCodesErreur());	
-		}
+			try {
+				if (connexionManager.testerMotDePasse(Pseudo, MotDePasse) == true) {
+				
+					HttpSession session = request.getSession();
+					session.setAttribute("pseudo", Pseudo);
+					session.setAttribute("motdepasse", MotDePasse);
+					
+					try {
+						utilisateur = utilisateurManager.selectByPseudo(Pseudo);
+					} catch (BusinessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}		
+					session.setAttribute("id", utilisateur.getNoUtilisateur());
+				
+					RequestDispatcher rd = request.getRequestDispatcher("/AccueilConnecteServlet");
+					rd.forward(request, response);
+					
+				}else {
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/desktop_page2.jsp");
+					
+					//Message d'erreur
+					request.setAttribute("ErreurConn", "Le pseudo ou le mot de passe est incorrect");
+					rd.forward(request, response);
+}
+			} catch (BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 		
 	}

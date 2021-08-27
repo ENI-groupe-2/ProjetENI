@@ -14,6 +14,10 @@ public interface ArticleVenduDAO {
 	//Sélectionner toutes les enchere 
 	public List<ArticleVendu> selectAll() throws SQLException;
 	
+	public ArticleVendu SelectByNoArticle (int noArticle) throws SQLException;
+	
+	public ArticleVendu SelectByNoCate (int noCate) throws SQLException;
 
+	
 }
 

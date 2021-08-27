@@ -30,11 +30,11 @@
         <img src="#"> <!--Afficher la photo de l'article mis en vente-->
     </main>
    
-    <form>
+    <form action="<%=request.getContextPath()%>/NouvelleVenteServlet" method="post">
             
         <div id="infos"> <!-- Informations de l'article -->
             <label for="article">Article : </label>
-            <input name="pseudo" type="text" id="pseudo" required autofocus>
+            <input name="article" type="text" id="article" required autofocus>
 
             <br><br>
 
@@ -45,11 +45,11 @@
 
             <label for="categorie">Catégorie : </label>
             <select name="categorie" id="categorie">
-                <option>Toutes</option>
-                <option>Informatique</option>
-                <option>Ameublement</option>
-                <option>Vêtement</option>
-                <option>Sport&Loisir</option>
+                <option value="9999">Toutes</option>
+                <option value="1">Informatique</option>
+                <option value="2">Ameublement</option>
+                <option value="3">Vêtement</option>
+                <option value="4">Sport&Loisir</option>
             </select>
 
             <br><br>
@@ -79,17 +79,17 @@
             <legend>Retrait</legend>
 
                 <label for="rue">Rue : </label>
-                <input name="rue" type="text" id="rue" required>
+                <input name="rue" type="text" id="rue" required value="${requestScope.Rue}">
 
                 <br><br>
 
                 <label for="ville">Ville : </label>
-                <input name="ville" type="text" id="ville" required>
+                <input name="ville" type="text" id="ville" required value="${requestScope.Ville}">
 
                 <br><br>
 
                 <label for="cp">Code postal : </label>
-                <input name="cp" type="text" id="cp" required>
+                <input name="cp" type="text" id="cp" required value="${requestScope.codePostal}">
         </fieldset>
 
         <br><br>

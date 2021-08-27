@@ -50,4 +50,9 @@ public class Retrait {
 		this.codePostal = codePostal;
 		this.ville = ville;
 	}
+	
+	public Retrait() {
+		// Coucou c'est vide :)
+	}
+	
 }

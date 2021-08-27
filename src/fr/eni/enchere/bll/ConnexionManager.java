@@ -70,6 +70,16 @@ public class ConnexionManager {
 	try {
    			utilisateurBDD = new Utilisateur();
    			utilisateurBDD = utilisateurDAO.SelectByPseudo(pseudo);
+   			
+   			
+   			//Si le pseudo est pas correct je mets du vide pour éviter les Exceptions
+   			if(utilisateurBDD == null) {
+   				utilisateurBDD= new Utilisateur();
+   				utilisateurBDD.setPseudo("");
+   				utilisateurBDD.setMotDePasse("");
+   			}
+   			
+   			
    			System.out.println(utilisateurBDD.getPseudo().toString());
    			System.out.println(utilisateurBDD.getMotDePasse().toString());
    			

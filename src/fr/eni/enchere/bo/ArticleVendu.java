@@ -65,6 +65,21 @@ public class ArticleVendu {
 	public void setEtatVente(String etatVente) {
 		this.etatVente = etatVente;
 	}
+	
+	public int getNoUtilisateur() {
+		return noUtilisateur;
+	}
+	public void setNoUtilisateur(int noUtilisateur) {
+		this.noUtilisateur = noUtilisateur;
+	}
+	
+	public int getCategorie() {
+		return noCategorie;
+	}
+	public void setCategorie(int noCategorie) {
+		this.noCategorie = noCategorie;
+	}
+	
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int miseAPrix, int prixVente, String etatVente) {
 	
@@ -106,6 +121,25 @@ public class ArticleVendu {
 	}
 	
 	public ArticleVendu(String nomArticle, String description, Date dateDebutEncheres, Date dateFinEncheres, int miseAPrix, int prixVente) {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	
+	public ArticleVendu(int noarticle, String nomarticle, String description, LocalDate debut, LocalDate fin, int prixinit, int prixvente) {
+
+		this.noArticle = noarticle;
+		this.nomArticle = nomarticle;
+		this.description = description;
+		this.dateDebutEncheres = debut;
+		this.dateFinEncheres = fin;
+		this.miseAPrix = prixinit;
+		this.prixVente = prixvente;
+		
+		
+	}
+	public ArticleVendu(int int1, String string, String string2, int int2, Date date) {
 		// TODO Auto-generated constructor stub
 	}
 	public ArticleVendu() {

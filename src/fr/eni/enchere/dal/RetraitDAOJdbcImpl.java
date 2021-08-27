@@ -13,7 +13,7 @@ import fr.eni.encheres.BusinessException;
 
 public class RetraitDAOJdbcImpl implements RetraitDAO {
 	
-	private static final String INSERT_RETRAIT = "insert into RETRAITS ( rue, code_postal, ville) values(?,?,?)";
+	private static final String INSERT_RETRAIT = "insert into RETRAITS (no_article, rue, code_postal, ville) values(?,?,?,?)";
 
 	private static final String SELECT_ALL_RETRAIT = "select * from RETRAITS";
 
@@ -31,9 +31,10 @@ public class RetraitDAOJdbcImpl implements RetraitDAO {
 			try {
 				cnx.setAutoCommit(false);
 				PreparedStatement rqt = cnx.prepareStatement(INSERT_RETRAIT, PreparedStatement.RETURN_GENERATED_KEYS);
-				rqt.setString(1, retrait.getRue());
-				rqt.setString(2, retrait.getCodePostal());
-				rqt.setString(1, retrait.getVille());
+				rqt.setInt(1, retrait.getNo_article());
+				rqt.setString(2, retrait.getRue());
+				rqt.setString(3, retrait.getCodePostal());
+				rqt.setString(4, retrait.getVille());
 				rqt.executeUpdate();
 				ResultSet rs = rqt.getGeneratedKeys();
 				if(rs.next())
